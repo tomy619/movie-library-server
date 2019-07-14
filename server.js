@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express()
-const fs = require('fs');
+// const fs = require('fs');
 var bodyParser = require('body-parser');
 var cors = require("cors");
 
@@ -53,52 +53,45 @@ app.get('/getPaginatedMovie',(req,res) => {
          })
   })
 
-app.post('/trial', (req,res)=>{
+// app.post('/trial', (req,res)=>{
 
-    for(j=1;j<4;j++){
+//     for(j=1;j<4;j++){
 
-    let rawdata = fs.readFileSync('./data/'+j+'.json');  
-    let student = JSON.parse(rawdata);  
-
-
-   let mediaLib =  student.page['content-items'].content.map(media=>{
+//     let rawdata = fs.readFileSync('./data/'+j+'.json');  
+//     let student = JSON.parse(rawdata);  
 
 
-        var movie = new Movie();
-        movie.name = media.name;
-        movie.poster_Image = 'https://viewbox-media-content.s3.us-west-2.amazonaws.com/tomy/'+media['poster-image']
-        movie.save_Date =  Date.now();
+//    let mediaLib =  student.page['content-items'].content.map(media=>{
+
+
+//         var movie = new Movie();
+//         movie.name = media.name;
+//         movie.poster_Image = 'https://viewbox-media-content.s3.us-west-2.amazonaws.com/tomy/'+media['poster-image']
+//         movie.save_Date =  Date.now();
     
-        movie.save(function (err, success) {
-            if (err) {
-                console.log('ERROR');
-                res.send('ERROR');
-            }
-            else {
-                return success
-            }
-        });        
+//         movie.save(function (err, success) {
+//             if (err) {
+//                 console.log('ERROR');
+//                 res.send('ERROR');
+//             }
+//             else {
+//                 return success
+//             }
+//         });        
 
-    })
+//     })
 
-    if(j === 3){
-        res.send('success');
-    }
+//     if(j === 3){
+//         res.send('success');
+//     }
     
-}
-
-
-    // Promise.all(mediaLib).then(response=>{
-    //     console.log('====================================');
-    //     console.log(i);
-    //     console.log('====================================');
-    //     res.send('success');
-
-    // })
+// }
 
 
 
-})
+
+
+// })
 
 
 
