@@ -1,4 +1,5 @@
 var express = require('express');
+var fs = require('fs');
 
 require('../app/config')
 
@@ -21,7 +22,7 @@ movie.get('/getMoviePage', (req,res)=>{
     })
 })
 
-movie.post('/addMovie', (req,res)=>{
+movie.get('/addMovie', (req,res)=>{
 
     for(j=1;j<4;j++){
 
@@ -34,7 +35,7 @@ movie.post('/addMovie', (req,res)=>{
 
         var movie = new Movie();
         movie.name = media.name;
-        movie.poster_Image = 'https://viewbox-media-content.s3.us-west-2.amazonaws.com/tomy/'+media['poster-image']
+        movie.poster_Image = 'https://movie-library-server.herokuapp.com/img/'+media['poster-image']
         movie.save_Date =  Date.now();
     
         movie.save(function (err, success) {
